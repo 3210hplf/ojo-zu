@@ -71,3 +71,6 @@
 |データベース|PostgreSQL|
 |開発環境|Docker|
 |その他|Amazon S3|
+
+## ■ 画面遷移図
+https://www.figma.com/design/tiXhjYZP187e2rjaYSVzqg/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=ZmIDQsgcH444n0iM-0
