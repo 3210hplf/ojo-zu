@@ -74,3 +74,7 @@
 
 ## ■ 画面遷移図
 https://www.figma.com/design/tiXhjYZP187e2rjaYSVzqg/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=ZmIDQsgcH444n0iM-0
+
+## ■ ER図
+各カラムの情報は[こちら](https://dbdiagram.io/d/6694cec09939893daeecf63d)に記載しています。
+![ER図](<ER図 2024-07-15 17.00.png>)
