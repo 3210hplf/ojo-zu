@@ -13,6 +13,7 @@
         </div>
         <%= f.submit "ログイン" %>
       <% end %>
+      <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %>
     </div>
   </div>
 </div>
