@@ -1,0 +1,20 @@
+<%= form_with model: @profile do |f| %>
+  <div class="mb-4">
+    <%= f.label :avatar, class: "label" %>
+    <%= f.file_field :avatar, class: "file-input file-input-bordered w-full" %>
+    <%= f.hidden_field :avatar_cache %>
+  </div>
+  <div class="mb-4">
+    <%= f.label :name, class: "label" %>
+    <%= f.text_field :name, class: "input input-bordered w-full" %>
+  </div>
+  <div class="mb-10">
+    <%= f.label :relationship, class: "label" %>
+    <%= f.select :relationship, Profile.relationships.map { |k, v| k }, { include_blank: "指定なし" }, class: "select select-bordered w-full" %>
+  </div>
+  <div class="m-2">
+    <div class="text-center">
+      <%= f.submit "登録", class: "btn btn-primary w-full" %>
+    </div>
+  </div>
+<% end %>
