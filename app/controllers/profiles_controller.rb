@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
 
   def create
     # プロフィールはログインしているユーザーに関連づけられている
-    @profile = current.build_profile(profile_params)
+    @profile = current_user.build_profile(profile_params)
     # チケットの枚数は登録時0枚
     @profile.ticket_count = 0
     if @profile.save

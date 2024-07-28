@@ -48,6 +48,11 @@ gem "bootsnap", require: false
 gem "sorcery"
 # ファイルアップロード
 gem "carrierwave"
+# 本番環境時のアップロード
+gem "fog-aws"
+# 環境変数を管理するため
+gem "dotenv-rails"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
