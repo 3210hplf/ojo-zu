@@ -10,8 +10,9 @@ class ProfilesController < ApplicationController
     # チケットの枚数は登録時0枚
     @profile.ticket_count = 0
     if @profile.save
-      redirect_to login_path
+      redirect_to login_path, success: "プロフィールを登録しました"
     else
+      flash.now[:warning] = "登録に失敗しました"
       render :new, status: :unprocessable_entity
     end
   end

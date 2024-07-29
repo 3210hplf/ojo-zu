@@ -9,9 +9,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.role = "poster"
     if @user.save
-      redirect_to login_path
+      redirect_to login_path, success: "ユーザー登録に成功しました"
     else
-      render :new
+      flash.now[:warning] = "登録に失敗しました"
+      render :new, status: :unprocessable_entity
     end
   end
 

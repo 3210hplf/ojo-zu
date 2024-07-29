@@ -10,7 +10,7 @@
   </div>
   <div class="mb-10">
     <%= f.label :relationship, class: "label" %>
-    <%= f.select :relationship, Profile.relationships.map { |k, v| I18n.t("enums.profile.relationship.#{k}") }, { include_blank: "指定なし" }, class: "select select-bordered w-full" %>
+    <%= f.select :relationship, Profile.relationships.map { |k, v| [I18n.t("enums.profile.relationship.#{k}"), k] }, { include_blank: "指定なし" }, class: "select select-bordered w-full" %>
   </div>
   <div class="m-2">
     <div class="text-center">
