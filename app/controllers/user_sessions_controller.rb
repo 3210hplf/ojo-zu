@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_to new_profile_path, success: "ログインが完了しました"
     else
-      flash.now[:warning] = "ログインに失敗しました"
+      flash.now[:warning] = "メールアドレスまたはパスワードが無効です"
       render :new, status: :unprocessable_entity
     end
   end
