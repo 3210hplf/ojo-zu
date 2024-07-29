@@ -1,4 +1,4 @@
-class AvatarUploader < CarrierWave::Uploader::Base
+class AvatarImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -45,7 +45,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # デフォルトのプロフィール写真を設定
   def default_url
-    "user_default_avatar"
+    "child_default_avatar"
   end
 
   # Override the filename of the uploaded files:

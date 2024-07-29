@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   resources :profiles, only: %i[new create]
+  resources :children, only: %i[new create]
 end

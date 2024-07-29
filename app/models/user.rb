@@ -2,6 +2,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_one :profile
+  has_many :children
 
   # パスワードは8文字以上
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
