@@ -1,0 +1,29 @@
+<%= form_with model: @post do |f| %>
+  <%= render 'shared/error_message', object: f.object %>
+  <div class="mb-4">
+    <%= f.label :image, class: "label" %>
+    <%= f.file_field :image, class: "file-input file-input-bordered w-full" %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <div class="mb-4">
+    <%= f.label :child_id, class: "label" %>
+    <%= f.select :child_id, @children.map {|child| [child.name, child.id] }, { include_blank: "指定なし" }, class: "select select-bordered w-full" %>
+  </div>
+  <div class="mb-4">
+    <%= f.label :title, class: "label" %>
+    <%= f.text_field :title, class: "input input-bordered w-full" %>
+  </div>
+  <div class="mb-4">
+    <%= f.label :created_date, class: "label" %>
+    <%= f.date_field :created_date, class: "input input-bordered w-full" %>
+  </div>
+  <div class="mb-10">
+    <%= f.label :explanation, class: "label" %>
+    <%= f.text_area :explanation, class: "textarea textarea-bordered w-full" %>
+  </div>
+  <div class="mb-20">
+    <div class="text-center">
+      <%= f.submit "登録", class: "btn btn-primary w-full" %>
+    </div>
+  </div>
+<% end %>
