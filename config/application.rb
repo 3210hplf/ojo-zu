@@ -16,5 +16,8 @@ module Myapp
       g.helper false       # helper ファイルを作成しない
       g.test_framework nil # test ファイルを作成しない
     end
+
+    # デフォルトの言語を日本語に設定
+    config.i18n.default_locale = :ja
   end
 end

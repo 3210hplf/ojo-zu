@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      profile: プロフィール
+      child: お子さま
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+      profile:
+        name: 名前
+        relationship: お子さまとの関係
+        avatar: アイコン
+      child:
+        name: なまえ
+        birthday: 誕生日
+        avatar_image: アイコン
+  enums:
+    profile:
+      relationship:
+        mother: ママ
+        father: パパ
+        grand_mother: おばあちゃん
+        grand_father: おじいちゃん
+        aunt: おばさん
+        uncle: おじさん
+        other: その他親族
+        

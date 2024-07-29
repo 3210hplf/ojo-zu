@@ -52,6 +52,9 @@ gem "carrierwave"
 gem "fog-aws"
 # 環境変数を管理するため
 gem "dotenv-rails"
+# i18nによる日本語化対応
+gem 'rails-i18n'
+gem 'enum_help'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
