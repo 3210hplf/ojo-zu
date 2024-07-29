@@ -1,4 +1,5 @@
 <%= form_with model: @child do |f| %>
+  <%= render 'shared/error_message', object: f.object %>
   <div class="mb-4">
     <%= f.label :avatar_image, class: "label" %>
     <%= f.file_field :avatar_image, class: "file-input file-input-bordered w-full" %>
