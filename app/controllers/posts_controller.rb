@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
 
+  def index
+    @posts = Post.includes(:child)
+  end
+
   def new
     @post = Post.new
     @children = current_user.children
@@ -8,7 +12,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to login_path, success: "作品を投稿しました"
+      redirect_to posts_path, success: "作品を投稿しました"
     else
       flash.now[:warning] = "投稿に失敗しました"
       @children = current_user.children #作成に失敗しても、再びお子さまの情報を取得
