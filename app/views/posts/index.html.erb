@@ -4,7 +4,9 @@
     <% if @posts.present? %>
       <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-5">
         <% @posts.each do |post| %>
-          <%= image_tag post.image.url, class: "w-full h-24 object-fit rounded-lg shadow-xl", alt: "作品" %>
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.image.url, class: "w-full h-24 object-fit rounded-lg shadow-xl", alt: "作品" %>
+          <% end %>
         <% end %>
       </div>
     <% else %>
