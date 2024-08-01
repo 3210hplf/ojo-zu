@@ -4,6 +4,12 @@ class PostsController < ApplicationController
     @posts = Post.includes(:child)
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @child = @post.child            # 作品の作者となるお子さまを取得
+    @profile = current_user.profile # ログイン中のユーザープロフィールを取得
+  end
+
   def new
     @post = Post.new
     @children = current_user.children

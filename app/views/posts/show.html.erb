@@ -1,0 +1,47 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+  <div class="navbar justify-end">
+    <div class="navbar-end">
+      <div class="dropdown">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+        </div>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow right-0">
+          <li><%= link_to "作品を編集", "#" %></li>
+          <li><%= link_to "作品を削除", "#" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white p-20 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold text-center mb-4">作品詳細</h1>
+    <div><%= image_tag @post.image.url %></div>
+    <div><%= @post.title %></div>
+    <div><%= @post.created_date %></div>
+    <div class="avatar">
+      <div class="w-12 rounded-full">
+        <%= image_tag @child.avatar_image.url %>
+      </div>
+    </div>
+    <div><%= created_age_month(@child.birthday, @post.created_date) %></div>
+    <div><%= @child.name %></div>
+    <div class="avatar">
+      <div class="w-12 rounded-full">
+        <%= image_tag @profile.avatar.url if @profile.avatar.present?%>
+      </div>
+    </div>
+    <div><%= @post.explanation %></div>
+  </div>
+</div>
