@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_children, only: [:new, :create, :edit, :update]
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.includes(:child)
@@ -42,6 +42,15 @@ class PostsController < ApplicationController
       end
     else
       redirect_to post_path(@post), warning: "更新の権限がありません"
+    end
+  end
+
+  def destroy
+    if can_post?(@post)
+      @post.destroy!
+      redirect_to posts_path,  success: "作品を削除しました"
+    else
+      redirect_to post_path(@post), warning: "削除の権限がありません"
     end
   end
 
