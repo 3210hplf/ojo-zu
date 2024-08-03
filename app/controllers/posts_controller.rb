@@ -1,18 +1,18 @@
 class PostsController < ApplicationController
+  before_action :set_children, only: [:new, :create, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update]
 
   def index
     @posts = Post.includes(:child)
   end
 
   def show
-    @post = Post.find(params[:id])
     @child = @post.child            # 作品の作者となるお子さまを取得
-    @profile = current_user.profile # ログイン中のユーザープロフィールを取得
+    @profile = @child.user.profile # お子さまを持つユーザープロフィールを取得
   end
 
   def new
     @post = Post.new
-    @children = current_user.children
   end
 
   def create
@@ -21,8 +21,27 @@ class PostsController < ApplicationController
       redirect_to posts_path, success: "作品を投稿しました"
     else
       flash.now[:warning] = "投稿に失敗しました"
-      @children = current_user.children #作成に失敗しても、再びお子さまの情報を取得
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    # 作品を取得し、作品はログイン中ユーザーが編集可能なものかを判定
+    unless can_post?(@post)
+      redirect_to post_path(@post), warning: "編集の権限がありません"
+    end
+  end
+
+  def update
+    if can_post?(@post)
+      if @post.update(post_params)
+        redirect_to post_path(params[:id]), success: "作品を編集しました"
+      else
+        flash.now[:warning] = "編集に失敗しました"
+        render :edit, status: :unprocessable_entity
+      end
+    else
+      redirect_to post_path(@post), warning: "更新の権限がありません"
     end
   end
 
@@ -30,5 +49,17 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:child_id, :title, :image, :image_cache, :created_date, :explanation)
+  end
+
+  def can_post?(post)
+    current_user.children.any? { |child| child.id == post.child_id }
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def set_children
+    @children = current_user.children
   end
 end
