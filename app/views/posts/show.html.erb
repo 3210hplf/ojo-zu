@@ -19,7 +19,7 @@
         <ul
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow right-0">
-          <li><%= link_to "作品を編集", "#" %></li>
+          <li><%= link_to "作品を編集", edit_post_path(@post) %></li>
           <li><%= link_to "作品を削除", "#" %></li>
         </ul>
       </div>
@@ -27,7 +27,7 @@
   </div>
   <div class="bg-white p-20 rounded-lg shadow-lg w-full max-w-md">
     <h1 class="text-2xl font-bold text-center mb-4">作品詳細</h1>
-    <div><%= image_tag @post.image.url %></div>
+    <div><%= image_tag @post.image.url, class: "rounded-xl" %></div>
     <div><%= @post.title %></div>
     <div><%= @post.created_date %></div>
     <div class="avatar">
