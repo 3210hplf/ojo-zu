@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :profiles, only: %i[new create]
   resources :children, only: %i[new create]
   resources :posts
+  resources :families, only: %i[index]
 end

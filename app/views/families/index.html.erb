@@ -1,0 +1,91 @@
+<div class="flex w-full flex-col">
+
+  <%# ユーザー欄 %>
+  <div class="m-10">
+    <p>ユーザープロフィール</p>
+    <%= link_to "#", class:"bg-base-300 rounded-box grid h-20 place-items-center" do %>
+      <div class="flex items-center gap-3">
+        <div class="avatar">
+          <div class="w-12 rounded-full">
+            <div class="mask mask-squircle h-12 w-12">
+              <%= image_tag @profile.avatar.url %>
+            </div>
+          </div>
+        </div>
+        <div class="font-bold">
+          <%= @profile.name %>
+        </div>
+        <div class="text-sm opacity-50">
+          <%= @profile.relationship_i18n %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%# お子さま欄 %>
+  <div class="m-10">
+    <p>お子さま一覧</p>
+    <% @children.each do |child| %>
+      <%= link_to new_child_path, class: "bg-base-300 rounded-box grid h-20 place-items-center m-4" do %>
+        <div class="flex items-center gap-3">
+          <div class="avatar">
+            <div class="w-12 rounded-full">
+              <%= image_tag child.avatar_image.url %>
+            </div>
+          </div>
+          <div class="font-bold">
+            <%= child.name %>
+          </div>
+          <div class="text-sm opacity-50 flex flex-col">
+            <div>
+              <%= l child.birthday %>
+            </div>
+            <div>
+              <%= now_age_month(child.birthday) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <%= link_to new_child_path, class: "bg-base-300 rounded-box grid h-20 place-items-center m-4" do %>
+      <div class="flex items-center gap-3">
+        <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <span class="">お子さまを追加</span>
+      </div>
+    <% end %>
+
+  </div>
+
+  <%# 家族欄 %>
+  <div class="m-10">
+    <p>家族一覧</p>
+    <%= link_to new_child_path, class: "bg-base-300 rounded-box grid h-20 place-items-center m-4" do %>
+    <div class="flex items-center gap-3">
+      <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </svg>
+      <span class="">家族を招待</span>
+    </div>
+  <% end %>
+
+</div>
