@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :child
+  has_many :comments, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 

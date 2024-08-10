@@ -1,0 +1,25 @@
+<% comments.each do |comment| %>
+<div id="comment-" class="border-b">
+  <div class="w-16">
+    <div class="avatar">
+      <div class="w-12 rounded-full">
+        <%= image_tag @profile.avatar.url, class: "w-full h-full" %>
+      </div>
+    </div>
+  </div>
+  <td class="pl-4">
+    <h3 class="text-sm font-bold"><%= comment.user.profile.name %></h3>
+    <p><%= simple_format(comment.content) %></p>
+  </td>
+    <td class="text-right">
+      <div class="flex justify-end space-x-2">
+        <%= link_to "#", class: "btn btn-sm btn-outline" do %>
+          <i class="bi bi-pencil-fill"></i>
+        <% end %>
+        <%= link_to "#", class: "btn btn-sm btn-outline btn-error" do %>
+          <i class="bi bi-trash-fill"></i>
+        <% end %>
+      </div>
+    </td>
+</div>
+<% end %>

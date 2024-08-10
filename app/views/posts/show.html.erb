@@ -25,23 +25,40 @@
       </div>
     </div>
   </div>
-  <div class="bg-white p-20 rounded-lg shadow-lg w-full max-w-md">
+  
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md mt-6">
     <h1 class="text-2xl font-bold text-center mb-4">作品詳細</h1>
-    <div><%= image_tag @post.image.url, class: "rounded-xl" %></div>
-    <div><%= @post.title %></div>
-    <div><%= @post.created_date %></div>
-    <div class="avatar">
-      <div class="w-12 rounded-full">
+    <div class="mb-4"><%= image_tag @post.image.url, class: "rounded-xl" %></div>
+    <div class="text-lg font-semibold mb-2"><%= @post.title %></div>
+    <div class="text-gray-500 mb-4"><%= @post.created_date %></div>
+    
+    <div class="flex items-center mb-4">
+      <div class="w-12 rounded-full mr-2">
         <%= image_tag @child.avatar_image.url %>
       </div>
-    </div>
-    <div><%= created_age_month(@child.birthday, @post.created_date) %></div>
-    <div><%= @child.name %></div>
-    <div class="avatar">
-      <div class="w-12 rounded-full">
-        <%= image_tag @profile.avatar.url if @profile.avatar.present?%>
+      <div>
+        <div><%= created_age_month(@child.birthday, @post.created_date) %></div>
+        <div class="font-semibold"><%= @child.name %></div>
       </div>
     </div>
-    <div><%= @post.explanation %></div>
+
+    <div class="flex items-center mb-4">
+      <div class="w-12 rounded-full mr-2">
+        <%= image_tag @profile.avatar.url if @profile.avatar.present? %>
+      </div>
+    </div>
+    
+    <div class="mt-4"><%= @post.explanation %></div>
+  </div>
+
+  <%# コメントフォーム %>
+  <div class="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mt-6 z-10">
+    <%= render 'comments/form', comment: @comment, post: @post %>
+  </div>
+
+  <%# コメント一覧をカードに含める %>
+  <div class="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mt-6 z-0">
+    <h2 class="text-xl font-bold mb-2">コメント一覧</h2>
+    <%= render 'comments/comments', comments: @comments %>
   </div>
 </div>

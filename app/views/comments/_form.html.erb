@@ -1,0 +1,8 @@
+<div class="fixed bottom-10 left-0 right-0 p-3 bg-white shadow-lg" id="comment-form">
+  <div class="row">
+    <%= form_with model: comment, url: post_comments_path(post) do |f| %>
+      <%= f.text_field :content, class: "input input-bordered w-full", row: "4", placeholder: "コメントを追加" %>
+      <%= f.submit "送信", class: "btn btn-primary mt-2" %>
+    <% end %>
+  </div>
+</div>
