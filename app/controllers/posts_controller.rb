@@ -9,6 +9,9 @@ class PostsController < ApplicationController
   def show
     @child = @post.child            # 作品の作者となるお子さまを取得
     @profile = @child.user.profile # お子さまを持つユーザープロフィールを取得
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user).order(created_at: :desc)
+    @show_header = true
   end
 
   def new
