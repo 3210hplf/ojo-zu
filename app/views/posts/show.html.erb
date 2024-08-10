@@ -51,14 +51,14 @@
     <div class="mt-4"><%= @post.explanation %></div>
   </div>
 
-  <%# コメントフォーム %>
-  <div class="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mt-6 z-10">
-    <%= render 'comments/form', comment: @comment, post: @post %>
-  </div>
-
   <%# コメント一覧をカードに含める %>
   <div class="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mt-6 z-0">
     <h2 class="text-xl font-bold mb-2">コメント一覧</h2>
     <%= render 'comments/comments', comments: @comments %>
   </div>
+</div>
+
+<%# コメントフォーム %>
+<div class="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mt-0 z-10">
+  <%= render 'comments/form', comment: @comment, post: @post %>
 </div>
