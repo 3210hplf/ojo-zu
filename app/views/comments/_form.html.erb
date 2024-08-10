@@ -1,8 +1,8 @@
-<div class="fixed bottom-10 left-0 right-0 p-3 bg-white shadow-lg" id="comment-form">
-  <div class="row">
-    <%= form_with model: comment, url: post_comments_path(post) do |f| %>
-      <%= f.text_field :content, class: "input input-bordered w-full", row: "4", placeholder: "コメントを追加" %>
-      <%= f.submit "送信", class: "btn btn-primary mt-2" %>
-    <% end %>
-  </div>
+<div class="fixed bottom-0 left-0 right-0 p-3 bg-white shadow-lg" id="comment-form">
+  <%= form_with model: comment, url: post_comments_path(post) do |f| %>
+    <div class="flex items-center">
+      <%= f.text_field :content, class: "input input-bordered flex-grow", rows: "4", placeholder: "コメントを追加" %> <!-- flex-growで大きくする -->
+      <%= f.submit "送信", class: "btn btn-primary mt-2 ml-2" %>
+    </div>
+  <% end %>
 </div>

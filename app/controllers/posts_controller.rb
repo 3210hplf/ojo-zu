@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @profile = @child.user.profile # お子さまを持つユーザープロフィールを取得
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
-    @show_header = true
+    @not_footer = true
   end
 
   def new

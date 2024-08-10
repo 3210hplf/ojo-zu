@@ -24,7 +24,9 @@
 
     <%# フッター %>
     <footer>
-      <%= render 'shared/poster_footer' %>
+      <% unless @not_footer %>
+        <%= render 'shared/poster_footer' %>
+      <% end %>
     </footer>
   </body>
 </html>
