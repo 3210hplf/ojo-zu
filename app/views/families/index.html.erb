@@ -1,9 +1,9 @@
 <div class="flex w-full flex-col">
 
   <%# ユーザー欄 %>
-  <div class="m-10">
+  <div class="m-4">
     <p>ユーザープロフィール</p>
-    <%= link_to "#", class:"bg-base-300 rounded-box grid h-20 place-items-center" do %>
+    <%= link_to "#", class:"bg-base-200 rounded-box grid h-20 place-items-center" do %>
       <div class="flex items-center gap-3">
         <div class="avatar">
           <div class="w-12 rounded-full">
@@ -23,10 +23,10 @@
   </div>
 
   <%# お子さま欄 %>
-  <div class="m-10">
+  <div class="m-4">
     <p>お子さま一覧</p>
     <% @children.each do |child| %>
-      <%= link_to new_child_path, class: "bg-base-300 rounded-box grid h-20 place-items-center m-4" do %>
+      <%= link_to new_child_path, class: "bg-base-200 rounded-box grid h-20 place-items-center my-4" do %>
         <div class="flex items-center gap-3">
           <div class="avatar">
             <div class="w-12 rounded-full">
@@ -47,7 +47,7 @@
         </div>
       <% end %>
     <% end %>
-    <%= link_to new_child_path, class: "bg-base-300 rounded-box grid h-20 place-items-center m-4" do %>
+    <%= link_to new_child_path, class: "bg-base-200 rounded-box grid h-20 place-items-center my-4" do %>
       <div class="flex items-center gap-3">
         <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -68,9 +68,9 @@
   </div>
 
   <%# 家族欄 %>
-  <div class="m-10">
+  <div class="m-4">
     <p>家族一覧</p>
-    <%= link_to new_child_path, class: "bg-base-300 rounded-box grid h-20 place-items-center m-4" do %>
+    <%= link_to new_child_path, class: "bg-base-200 rounded-box grid h-20 place-items-center my-4" do %>
     <div class="flex items-center gap-3">
       <svg
       xmlns="http://www.w3.org/2000/svg"
