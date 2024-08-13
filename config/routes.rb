@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create update show destroy], shallow: true 
   end
   resources :families, only: %i[index]
+  resources :others, only: %i[index]
 end
