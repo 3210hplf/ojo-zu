@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :children, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :stamps, dependent: :destroy
+  has_many :stamp_posts, through: :stamps, source: :post
 
   # パスワードは8文字以上
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
