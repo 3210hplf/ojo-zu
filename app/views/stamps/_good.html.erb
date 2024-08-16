@@ -1,0 +1,9 @@
+<% if post.stamps.where(user_id: current_user.id, stamp_type: 'good').exists? %>
+  <%= link_to stamp_path(current_user.stamps.find_by(post_id: post.id, stamp_type: 'good')), data: { turbo_method: :delete } do %>
+    <span>👍</span><%= post.stamps.where(stamp_type:'good').count %>
+  <% end %>
+<% else %>
+  <%= link_to post_stamps_path(post_id: post.id, stamp_type: 'good'), data: { turbo_method: :post } do %>
+    <span>👍</span><%= post.stamps.where(stamp_type:'good').count %>
+  <% end %>
+<% end %>

@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :profiles, only: %i[new create]
   resources :children, only: %i[new create]
   resources :posts do
-    resources :comments, only: %i[create update show destroy], shallow: true 
+    resources :comments, only: %i[create update show destroy], shallow: true
+    resources :stamps, only: %i[create destroy], shallow: true
   end
   resources :families, only: %i[index]
   resources :others, only: %i[index]
