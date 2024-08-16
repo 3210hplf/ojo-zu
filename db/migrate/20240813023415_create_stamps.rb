@@ -7,6 +7,5 @@ class CreateStamps < ActiveRecord::Migration[7.1]
     end
     add_reference :stamps, :user, foreign_key: true
     add_reference :stamps, :post, foreign_key: true
-    add_index :stamps, [:user_id, :post_id], unique: true
   end
 end

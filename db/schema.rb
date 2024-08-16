@@ -63,7 +63,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_13_023415) do
     t.bigint "user_id"
     t.bigint "post_id"
     t.index ["post_id"], name: "index_stamps_on_post_id"
-    t.index ["user_id", "post_id"], name: "index_stamps_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_stamps_on_user_id"
   end
 
