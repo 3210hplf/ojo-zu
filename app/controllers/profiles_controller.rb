@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :set_profile, only: [:edit, :update]
 
   def new
     @profile = Profile.new
@@ -10,10 +11,22 @@ class ProfilesController < ApplicationController
     # チケットの枚数は登録時0枚
     @profile.ticket_count = 0
     if @profile.save
-      redirect_to login_path, success: "プロフィールを登録しました"
+      redirect_to login_path, success: 'プロフィールを登録しました'
     else
-      flash.now[:warning] = "登録に失敗しました"
+      flash.now[:warning] = '登録に失敗しました'
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @profile.update(profile_params)
+      redirect_to families_path, success: 'プロフィールを編集しました'
+    else
+      flash.now[:warning] = '編集に失敗しました'
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -21,5 +34,9 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:avatar, :avatar_cache, :name, :relationship)
+  end
+
+  def set_profile
+    @profile = Profile.find(params[:id])
   end
 end
