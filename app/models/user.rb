@@ -17,6 +17,10 @@ class User < ApplicationRecord
   # 投稿者：１、　閲覧者：２
   enum role: { poster: 1, viewer: 2 }
 
+  def own?(object)
+    id == object&.user_id
+  end
+
   def unstamped(stamp)
     stamps.destroy(stamp)
   end
