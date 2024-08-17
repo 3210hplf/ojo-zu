@@ -1,6 +1,7 @@
 <%= form_with model: @child do |f| %>
   <%= render 'shared/error_message', object: f.object %>
   <div class="mb-4">
+    <%= image_tag child.avatar_image_url, class: "rounded-xl grid grid-cols-2 place-content-center" if child.avatar_image_url.present? %>
     <%= f.label :avatar_image, class: "label" %>
     <%= f.file_field :avatar_image, class: "file-input file-input-bordered w-full" %>
     <%= f.hidden_field :avatar_image_cache %>
