@@ -1,0 +1,15 @@
+<%= turbo_stream.replace "unstamp-good-for-post-#{@post.id}" do %>
+  <%= render 'stamps/good', post: @post %>
+<% end %>
+<%= turbo_stream.replace "unstamp-love-for-post-#{@post.id}" do %>
+  <%= render 'stamps/love', post: @post %>
+<% end %>
+<%= turbo_stream.replace "unstamp-clap-for-post-#{@post.id}" do %>
+  <%= render 'stamps/clap', post: @post %>
+<% end %>
+<%= turbo_stream.replace "unstamp-surprise-for-post-#{@post.id}" do %>
+  <%= render 'stamps/surprise', post: @post %>
+<% end %>
+<%= turbo_stream.replace "unstamp-laugh-for-post-#{@post.id}" do %>
+  <%= render 'stamps/laugh', post: @post %>
+<% end %>
