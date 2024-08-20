@@ -1,13 +1,13 @@
 class StampsController < ApplicationController
   def create
     @stamp = current_user.stamps.create(stamp_params)
-    redirect_to post_path(@stamp.post), success: 'スタンプを押しました'
+    @post = @stamp.post
   end
 
   def destroy
     @stamp = current_user.stamps.find(params[:id])
+    @post = @stamp.post
     current_user.unstamped(@stamp)
-    redirect_to post_path(@stamp.post), success: 'スタンプを解除しました'
   end
 
   private
