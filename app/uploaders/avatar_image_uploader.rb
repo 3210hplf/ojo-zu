@@ -44,9 +44,9 @@ class AvatarImageUploader < CarrierWave::Uploader::Base
   end
 
   # デフォルトのプロフィール写真を設定
-  def default_url
-    "child_default_avatar"
-  end
+  # def default_url
+  #   "child_default_avatar"
+  # end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
