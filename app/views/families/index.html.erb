@@ -70,7 +70,7 @@
   <%# 家族欄 %>
   <div class="m-4">
     <p>家族一覧</p>
-    <%= link_to new_child_path, class: "bg-base-200 rounded-box grid h-20 place-items-center my-4" do %>
+    <%= link_to invitations_path, data: { turbo_method: :post }, class: "bg-base-200 rounded-box grid h-20 place-items-center my-4" do %>
     <div class="flex items-center gap-3">
       <svg
       xmlns="http://www.w3.org/2000/svg"

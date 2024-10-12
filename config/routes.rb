@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   resources :families, only: %i[index]
   resources :others, only: %i[index]
+  resources :invitations, only: %i[new create show_link]
 end
