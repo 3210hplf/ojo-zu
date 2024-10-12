@@ -6,4 +6,5 @@ class Child < ApplicationRecord
 
   validates :name, presence: true
   validates :birthday, presence: true
+  validates :avatar_image, presence: true
 end

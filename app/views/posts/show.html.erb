@@ -44,7 +44,7 @@
 
     <div class="flex items-center mb-4">
       <div class="w-12 rounded-full mr-2">
-        <%= image_tag @child.avatar_image.url %>
+        <%= image_tag @child.avatar_image.url if @child.avatar_image.present? %>
       </div>
       <div>
         <div><%= created_age_month(@child.birthday, @post.created_date) %></div>
@@ -62,12 +62,14 @@
   </div>
 
   <%# コメント一覧をカードに含める %>
-  <div class="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mt-6 z-0">
-    <h2 class="text-xl font-bold mb-2">コメント一覧</h2>
-    <div id='table-comment'>
-      <%= render 'comments/comments', comments: @comments %>
+  <% if @post.comments.present? %>
+    <div class="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mt-6 z-0">
+      <h2 class="text-xl font-bold mb-2">コメント一覧</h2>
+      <div id='table-comment'>
+        <%= render 'comments/comments', comments: @comments %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <%# コメントフォーム %>
