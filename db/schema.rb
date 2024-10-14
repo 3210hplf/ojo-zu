@@ -86,9 +86,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_22_002059) do
   end
 
   create_table "viewer_accesses", force: :cascade do |t|
-    t.integer "poster_id"
+    t.integer "viewed_user_id"
     t.integer "viewer_id"
-    t.boolean "approval_flag", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

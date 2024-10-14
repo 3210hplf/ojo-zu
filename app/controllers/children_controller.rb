@@ -10,7 +10,7 @@ class ChildrenController < ApplicationController
     if @child.save
       redirect_to login_path, success: "お子さまを登録しました"
     else
-      flash.now[:warning] = "登録に失敗しました"
+      flash.now[:warning] = CREATE_FAILED
       render :new, status: :unprocessable_entity
     end
   end
@@ -22,7 +22,7 @@ class ChildrenController < ApplicationController
     if @child.update(child_params)
       redirect_to families_path, success: 'お子さま情報を編集しました'
     else
-      flash.now[:warning] = '編集に失敗しました'
+      flash.now[:warning] = UPDATE_FAILED
       render :edit, status: :unprocessable_entity
     end
   end

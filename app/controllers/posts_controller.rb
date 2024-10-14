@@ -19,24 +19,26 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.save
-      redirect_to posts_path, success: "作品を投稿しました"
-    else
-      flash.now[:warning] = "投稿に失敗しました"
-      render :new, status: :unprocessable_entity
+    Post.transaction do
+      @post = Post.new(post_params)
+      if @post.save
+        redirect_to posts_path, success: "作品を投稿しました"
+      else
+        flash.now[:warning] = "投稿に失敗しました"
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
   def edit
     # 作品を取得し、作品はログイン中ユーザーが編集可能なものかを判定
-    unless can_post?(@post)
+    unless PostPolicy.new(current_user, @post).can_edit_or_delete?
       redirect_to post_path(@post), warning: "編集の権限がありません"
     end
   end
 
   def update
-    if can_post?(@post)
+    if PostPolicy.new(current_user, @post).can_edit_or_delete?
       if @post.update(post_params)
         redirect_to post_path(params[:id]), success: "作品を編集しました"
       else
@@ -49,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    if can_post?(@post)
+    if PostPolicy.new(current_user, @post).can_edit_or_delete?
       @post.destroy!
       redirect_to posts_path,  success: "作品を削除しました"
     else
@@ -61,10 +63,6 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:child_id, :title, :image, :image_cache, :created_date, :explanation)
-  end
-
-  def can_post?(post)
-    current_user.children.any? { |child| child.id == post.child_id }
   end
 
   def set_post
