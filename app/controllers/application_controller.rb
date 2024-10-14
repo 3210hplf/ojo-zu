@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+  # 共通部分のフラッシュメッセージを定数として定義
+  CREATE_FAILED = "登録に失敗しました".freeze
+  UPDATE_FAILED = "編集に失敗しました".freeze
+
   # 全てのコントローラに適用
   before_action :require_login
 

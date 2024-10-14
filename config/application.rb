@@ -10,6 +10,9 @@ module Myapp
 
     config.autoload_lib(ignore: %w(assets tasks))
 
+    # サービスクラスを読み込む
+    config.autoload_paths << Rails.root.join('app/services')
+
     # generater時に余計なファイルが生成されないよう設定
     config.generators do |g|
       g.skip_routes true   # ルーティングの記述を作成しない

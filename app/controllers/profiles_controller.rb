@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
     if @profile.save
       redirect_to new_child_path, success: 'プロフィールを登録しました'
     else
-      flash.now[:warning] = '登録に失敗しました'
+      flash.now[:warning] = CREATE_FAILED
       render :new, status: :unprocessable_entity
     end
   end
@@ -25,7 +25,7 @@ class ProfilesController < ApplicationController
     if @profile.update(profile_params)
       redirect_to families_path, success: 'プロフィールを編集しました'
     else
-      flash.now[:warning] = '編集に失敗しました'
+      flash.now[:warning] = UPDATE_FAILED
       render :edit, status: :unprocessable_entity
     end
   end
