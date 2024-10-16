@@ -1,37 +1,41 @@
 <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
   <div class="navbar justify-end">
-    <div class="navbar-end">
-      <div class="dropdown">
-        <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h7" />
-          </svg>
+    <% if current_user.children.any?(@post.child) %>
+      <div class="navbar-end">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h7" />
+            </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow right-0">
+            <li><%= link_to "作品を編集", edit_post_path(@post) %></li>
+            <li><%= link_to "作品を削除", post_path(@post), class: "text-red-500", data: { turbo_method: :delete, turbo_confirm: "作品を削除してよろしいですか？" } %></li>
+          </ul>
         </div>
-        <ul
-          tabindex="0"
-          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow right-0">
-          <li><%= link_to "作品を編集", edit_post_path(@post) %></li>
-          <li><%= link_to "作品を削除", post_path(@post), class: "text-red-500", data: { turbo_method: :delete, turbo_confirm: "作品を削除してよろしいですか？" } %></li>
-        </ul>
       </div>
-    </div>
+    <% end %>
   </div>
   
   <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md mt-6">
     <h1 class="text-2xl font-bold text-center mb-4">作品詳細</h1>
     <div class="mb-4"><%= image_tag @post.image.url, class: "rounded-xl" %></div>
-    <div class='grid grid-cols-8'>
-      <div class="text-lg font-semibold col-start-1 col-end-5"><%= @post.title %></div>
-      <div class='col-start-5 col-end-8'>
+    <div class='flex justify-between'>
+      <div class="text-lg font-semibold">
+        <%= @post.title %>
+      </div>
+      <div class=''>
         <%= render 'stamps/good', {post: @post} %>
         <%= render 'stamps/love', {post: @post} %>
         <%= render 'stamps/clap', {post: @post} %>
@@ -62,14 +66,14 @@
   </div>
 
   <%# コメント一覧をカードに含める %>
-  <% if @post.comments.present? %>
+
     <div class="bg-white p-4 rounded-lg shadow-lg w-full max-w-md mt-6 z-0">
       <h2 class="text-xl font-bold mb-2">コメント一覧</h2>
       <div id='table-comment'>
         <%= render 'comments/comments', comments: @comments %>
       </div>
     </div>
-  <% end %>
+  
 </div>
 
 <%# コメントフォーム %>

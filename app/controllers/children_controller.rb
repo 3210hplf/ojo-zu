@@ -8,7 +8,7 @@ class ChildrenController < ApplicationController
   def create
     @child = current_user.children.build(child_params)
     if @child.save
-      redirect_to login_path, success: "お子さまを登録しました"
+      redirect_to families_path, success: "お子さまを登録しました"
     else
       flash.now[:warning] = CREATE_FAILED
       render :new, status: :unprocessable_entity
